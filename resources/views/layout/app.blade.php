@@ -24,8 +24,7 @@
         <meta charset="utf-8" />
         <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
         <title>
             Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template -
@@ -38,49 +37,41 @@
         <link
             rel="icon"
             type="image/x-icon"
-            href="{{ asset('assets/fe/assets/img/favicon/favicon.ico') }}"
-        />
+            href="{{ asset('assets/fe/assets/img/favicon/favicon.ico') }}"/>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet"
-        />
+            rel="stylesheet"/>
 
         <!-- Icons. Uncomment required icon fonts -->
         <link
             rel="stylesheet"
-            href="{{ asset('assets/fe/assets/vendor/fonts/boxicons.css') }}"
-        />
+            href="{{ asset('assets/fe/assets/vendor/fonts/boxicons.css') }}"/>
 
         <!-- Core CSS -->
         <link
             rel="stylesheet"
             href="{{ asset('assets/fe/assets/vendor/css/core.css') }}"
-            class="template-customizer-core-css"
-        />
+            class="template-customizer-core-css"/>
         <link
             rel="stylesheet"
             href="{{ asset('assets/fe/assets/vendor/css/theme-default.css') }}"
-            class="template-customizer-theme-css"
-        />
+            class="template-customizer-theme-css"/>
         <link
             rel="stylesheet"
-            href="{{ asset('assets/fe/assets/css/demo.css') }}"
-        />
+            href="{{ asset('assets/fe/assets/css/demo.css') }}"/>
 
         <!-- Vendors CSS -->
         <link
             rel="stylesheet"
-            href="{{ asset('assets/fe/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"
-        />
+            href="{{ asset('assets/fe/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>
 
         <link
             rel="stylesheet"
-            href="{{ asset('assets/fe/assets/vendor/libs/apex-charts/apex-charts.css') }}"
-        />
+            href="{{ asset('assets/fe/assets/vendor/libs/apex-charts/apex-charts.css') }}"/>
 
         <!-- Page CSS -->
 
@@ -96,12 +87,15 @@
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar">
             <div class="layout-container">
+
                 <!-- Menu -->
                 <aside
                     id="layout-menu"
                     class="layout-menu menu-vertical menu bg-menu-theme"
                 >
                     <div class="app-brand demo">
+
+
                         <a href="index.html" class="app-brand-link">
                             <span class="app-brand-logo demo">
                                 <svg
@@ -241,7 +235,7 @@
 
                         <li class="menu-item @yield('user')">
                             <a
-                                href="layouts-without-menu.html"
+                                href="{{ route('user.index') }}"
                                 class="menu-link"
                             >
                                 <div data-i18n="Without menu">User</div>
@@ -249,11 +243,31 @@
                         </li>
                         <li class="menu-item @yield('level')">
                             <a
-                                href="layouts-without-navbar.html"
+                                href="{{ route('level.index') }}"
                                 class="menu-link"
                             >
                                 <div data-i18n="Without navbar">
                                     Level
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item @yield('anggota')">
+                            <a
+                                href="{{ route('anggota.index') }}"
+                                class="menu-link"
+                            >
+                                <div data-i18n="Without navbar">
+                                    Anggota
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item @yield('buku')">
+                            <a
+                                href="{{ route('buku.index') }}"
+                                class="menu-link"
+                            >
+                                <div data-i18n="Without navbar">
+                                    Buku
                                 </div>
                             </a>
                         </li>
@@ -352,11 +366,14 @@
                                                     <div class="flex-grow-1">
                                                         <span
                                                             class="fw-semibold d-block"
-                                                            >John Doe</span
+                                                            >{{ Auth::user()->name }}</span
                                                         >
                                                         <small
                                                             class="text-muted"
-                                                            >Admin</small
+                                                            >{{ $admin = (isset(Auth::user()->level->nama_level)) ? Auth::user()->level->nama_level : "" ;  }}</small
+
+
+
                                                         >
                                                     </div>
                                                 </div>
@@ -404,17 +421,21 @@
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a
-                                                class="dropdown-item"
-                                                href="auth-login-basic.html"
-                                            >
-                                                <i
-                                                    class="bx bx-power-off me-2"
-                                                ></i>
-                                                <span class="align-middle"
-                                                    >Log Out</span
+                                            <form action="{{ route('logout') }}" method="post">
+                                                @csrf
+                                                <button type="submit"
+                                                    class="dropdown-item"
+
                                                 >
-                                            </a>
+                                                    <i
+                                                        class="bx bx-power-off me-2"
+                                                    ></i>
+                                                    <span class="align-middle"
+                                                        >Log Out</span
+                                                    >
+                                            </button>
+
+                                            </form>
                                         </li>
                                     </ul>
                                 </li>

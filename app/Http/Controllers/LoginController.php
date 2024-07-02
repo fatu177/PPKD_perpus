@@ -19,4 +19,13 @@ class LoginController extends Controller
             return redirect()->route('login')->with('error', 'Invalid credentials');
         }
     }
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    }
 }
