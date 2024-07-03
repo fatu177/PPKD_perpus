@@ -6,6 +6,9 @@ active
 <div class="card">
     <div class="card-header">
         <h2>Edit {{ $title }}</h2>
+        <div align="right">
+            <button class="btn btn-primary btnadd">Add</button>
+        </div>
     </div>
     <form action="{{ route('level.update', $data->id) }}" method="post">
         @csrf
@@ -21,5 +24,11 @@ active
         </div>
     </form>
 </div>
+<script>
+    $('.btnadd').click(fungtion() {
+        alert('duar')
+    })
+
+</script>
 
 @endsection

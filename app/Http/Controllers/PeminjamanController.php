@@ -21,8 +21,9 @@ class PeminjamanController extends Controller
     public function create()
     {
         $title = 'peminjaman';
+        $max = anggota::select('id')->max("id");
         $anggota = anggota::get();
-        return view('peminjaman.create', compact('title', 'anggota'));
+        return view('peminjaman.create', compact('title', 'anggota', 'max'));
     }
 
     /**
