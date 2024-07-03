@@ -271,6 +271,16 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="menu-item @yield('peminjaman')">
+                            <a
+                                href="{{ route('peminjaman.index') }}"
+                                class="menu-link"
+                            >
+                                <div data-i18n="Without navbar">
+                                    Pinjam Buku
+                                </div>
+                            </a>
+                        </li>
 
                     </ul>
                 </aside>
