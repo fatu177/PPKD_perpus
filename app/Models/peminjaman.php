@@ -12,7 +12,9 @@ class peminjaman extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'id_anggota',
-        'no_transaksi'
+        'no_transaksi',
+        'tgl_pinjam',
+        'tgl_kembali',
     ];
     public function anggota()
     {

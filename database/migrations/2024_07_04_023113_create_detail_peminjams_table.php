@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('id_buku')
                 ->nullable()
                 ->constrained('bukus', 'id')->cascadeOnUpdate()->nullOnDelete();
-
+            $table->date('tgl_kembali_buku')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +34,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('detail_peminjams');
     }
-
-   
 };
