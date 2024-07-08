@@ -24,11 +24,4 @@ active
         </div>
     </form>
 </div>
-<script>
-    $('.btnadd').click(fungtion() {
-        alert('duar')
-    })
-
-</script>
-
 @endsection
