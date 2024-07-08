@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_anggota')->nullable();
             $table->foreign('id_anggota')->references('id')->on('anggotas')->onDelete('set NULL')->onUpdate('cascade');
             $table->string('no_transaksi');
+            $table->date('tgl_pinjam');
+            $table->date('tgl_kembali');
             $table->softDeletes();
             $table->timestamps();
         });

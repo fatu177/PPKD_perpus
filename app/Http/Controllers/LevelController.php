@@ -34,8 +34,12 @@ class LevelController extends Controller
         $request->validate([
             'nama_level' => 'required|unique:levels|max:255',
         ]);
+        $levels = [];
+        foreach ($request->nama_level as $nama_level) {
+            $levels[] = ['nama_level' => $nama_level];
+        }
 
-        level::create($request->all());
+        Level::insert($levels);
         return redirect()->route('level.index');
     }
 
