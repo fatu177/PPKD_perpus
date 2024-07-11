@@ -49,6 +49,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
 
                             <tr class="list1">

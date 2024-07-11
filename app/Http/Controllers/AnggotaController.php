@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\anggota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AnggotaController extends Controller
 {
@@ -76,7 +77,12 @@ class AnggotaController extends Controller
      */
     public function destroy(string $id)
     {
-        anggota::find($id)->delete();
-        return redirect()->route('anggota.index');
+        try {
+            anggota::find($id)->delete();
+            return redirect()->route('anggota.index');
+            // Logika untuk menyimpan data
+        } catch (\Exception $e) {
+            return Redirect::back()->withInput()->withErrors('Gagal menyimpan data.');
+        }
     }
 }

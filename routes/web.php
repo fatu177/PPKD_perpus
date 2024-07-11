@@ -20,11 +20,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('level', LevelController::class);
-    Route::resource('user', UserController::class);
-    Route::resource('anggota', AnggotaController::class);
-    Route::resource('buku', BukuController::class);
-    Route::resource('peminjaman', PeminjamanController::class);
+    Route::middleware(['auth', 'Administrator'])->group(function () {
+
+        Route::resource('level', LevelController::class);
+        Route::resource('user', UserController::class);
+        Route::resource('anggota', AnggotaController::class);
+        Route::resource('buku', BukuController::class);
+        Route::resource('peminjaman', PeminjamanController::class);
+    });
+
 
 
 

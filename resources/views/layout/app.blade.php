@@ -223,7 +223,7 @@
                     <ul class="menu-inner py-1">
                         <!-- Dashboard -->
                         <li class="menu-item @yield('dashboard')">
-                            <a href="index.html" class="menu-link">
+                            <a href="{{ route('dashboard') }}" class="menu-link">
                                 <i
                                     class="menu-icon tf-icons bx bx-home-circle"
                                 ></i>
@@ -551,6 +551,6 @@
 
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js')}}"></script>
-        
+
     </body>
 </html>
